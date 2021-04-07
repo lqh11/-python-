@@ -17,8 +17,8 @@ for i in range(len(imgs)):
     op = Image.open('F:\\python_works\\Filter_blank_bg\\test\\image\\'+imgs[i])
     t = Counter(list(op.getdata())).most_common(1)[0][0]     #得到出现次数最多的像素颜色
     num = Counter(list(op.getdata())).most_common(1)[0][1]   #得到出现的次数
-    #print(len(imgs_added[i].getdata()))  测试图片的结果为：2073600
-    if num / 2073600 > 0.9 and t == (255, 255, 255, 255):   #筛选空白比例占90%以上的图片
+    num_all = len(op.getdata())
+    if num / num_all > 0.9 and t == (255, 255, 255, 255):   #筛选空白比例占90%以上的图片
         print(imgs[i])
         white_lists.append(imgs[i])
     op.close()
